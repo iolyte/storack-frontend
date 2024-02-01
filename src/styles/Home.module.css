@@ -1,0 +1,71 @@
+.zoom {
+  transition: transform 0.2s;
+  height: 100%;
+  cursor: pointer;
+}
+
+.zoom:hover {
+  transform: scale(1.1);
+}
+
+.text {
+  position: absolute;
+  top: 30%;
+  left: 25%;
+  text-align: center;
+  margin: auto;
+  padding: 30px;
+}
+
+.border-visible {
+  border: 8px solid white;
+}
+
+.text h6 {
+  font-size: 15px;
+  color: white;
+  font-weight: 600;
+  margin-bottom: 50px;
+}
+
+.text h1 {
+  font-size: 60px;
+  color: white;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.text button {
+  text-align: center;
+  color: white;
+  background-color: transparent;
+  border: 2px solid white;
+  padding: 5px 30px 5px 30px;
+  transition: ease-in-out 0.2s;
+  border-radius: 5px;
+}
+
+.text button:hover {
+  background-color: white;
+  color: black;
+}
+
+@media (max-width: 768px) {
+  .text {
+    top: 25%;
+    left: 15%;
+  }
+  .text h6 {
+    font-size: 10px;
+    margin-bottom: 15px;
+  }
+  .text h1 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  .text button {
+    border: 1px solid white;
+    padding: 5px 15px 5px 15px;
+    font-size: 10px;
+  }
+}
