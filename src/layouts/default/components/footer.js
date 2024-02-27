@@ -110,6 +110,7 @@ const Footer = (props) => {
       link: '#',
     },
   ];
+
   return (
     <footer className="page-footer font-small blue pt-4 bg-dark text-white">
       <div className="container-fluid text-center text-md-left">
@@ -127,7 +128,8 @@ const Footer = (props) => {
               <p>
                 Address :
                 <br />
-                2nd Floor, 1st Building, No. 188, East Road, Ahmadabad, Gujarat, India
+                2nd Floor, 1st Building, No. 188, East Road, Ahmadabad, Gujarat,
+                India
               </p>
               {/* <p>Website: https://meizhigao.com/</p> */}
             </div>
@@ -141,7 +143,7 @@ const Footer = (props) => {
               {aboutNavigationLabel.length > 0 &&
                 aboutNavigationLabel.map((item) => {
                   return (
-                    <li id={uuid()}>
+                    <li key={uuid()}>
                       <a
                         href={item.link}
                         className="text-secondary text-decoration-none"
@@ -160,7 +162,7 @@ const Footer = (props) => {
               {productsNavigationLabel.length > 0 &&
                 productsNavigationLabel.map((item) => {
                   return (
-                    <li id={uuid()}>
+                    <li key={uuid()}>
                       <a
                         href={item.link}
                         className="text-secondary text-decoration-none"
@@ -179,7 +181,7 @@ const Footer = (props) => {
               {scenariosNavigationLabel.length > 0 &&
                 scenariosNavigationLabel.map((item) => {
                   return (
-                    <li id={uuid()}>
+                    <li key={uuid()}>
                       <a
                         href={item.link}
                         className="text-secondary text-decoration-none"
@@ -192,13 +194,13 @@ const Footer = (props) => {
             </ul>
           </div>
 
-          <div className="col-md-2 mb-md-0 mb-3 text-start">
+          {/* <div className="col-md-2 mb-md-0 mb-3 text-start">
             <h5 className="text-uppercase mt-md-3">News</h5>
             <ul className="list-unstyled mt-md-4">
               {newsNavigationLabel.length > 0 &&
                 newsNavigationLabel.map((item) => {
                   return (
-                    <li id={uuid()}>
+                    <li key={uuid()}>
                       <a
                         href={item.link}
                         className="text-secondary text-decoration-none"
@@ -209,7 +211,7 @@ const Footer = (props) => {
                   );
                 })}
             </ul>
-          </div>
+          </div> */}
 
           {/* <div className="col-md-1 mb-md-0 mb-3 mt-md-3">
             <img

@@ -36,18 +36,16 @@ const CompanyCultureSection = () => {
         }}
       >
         <Typography
-          variant="h3"
           fontWeight={700}
-          fontFamily="arial"
-          sx={{ my: 5 }}
+          sx={{ fontSize: { xs: 24, sm: 32, md: 36, lg: 48 }, my: 2 }}
         >
           Company Culture
         </Typography>
       </Box>
-      <Grid container spacing={2}>
+      <Grid container spacing={3}>
         {companyCultureData.map(({ imageUrl, title, subtitle }, index) => {
           return (
-            <Grid item xs={12} sm={6} md={3} key={index}>
+            <Grid item xs={6} sm={4} md={3} key={index}>
               <Box
                 sx={{
                   display: 'flex',

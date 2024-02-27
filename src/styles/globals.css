@@ -1,3 +1,9 @@
 * {
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.hover-card:hover {
+  background-color: #72C240; /* Replace with your primary color */
+  color: #fff; /* Optional: Change text color on hover */
+  /* Add any other styles you want to apply on hover */
+}

@@ -22,20 +22,14 @@ const CompanyProfile = () => {
         }}
       >
         <Typography
-          variant="h3"
           fontWeight={700}
-          fontFamily="arial"
-          sx={{ my: 2 }}
+          sx={{ fontSize: { xs: 24, sm: 32, md: 36, lg: 48 }, my: 2 }}
         >
           About Storack
         </Typography>
       </Box>
 
-      <Box
-        sx={{
-          mx: 11,
-        }}
-      >
+      <Box mx={{ xs: 1, sm: 5, md: 10, lg: 20 }}>
         {aboutUs.map((para, index) => (
           <Typography
             key={index}
@@ -55,7 +49,7 @@ const CompanyProfile = () => {
       {/* Counters Section */}
       <Box
         sx={{
-          my: 8,
+          my: 5,
         }}
       >
         <CountersSection />
