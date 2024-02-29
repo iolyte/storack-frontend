@@ -16,38 +16,38 @@ const Milestones = () => {
     {
       year: '2021',
       description:
-        'MZG’s first "storage expert”store opened; and the Shenzhen-Hong Kong industry-university-research base launched a strategic cooperation of "production, learning, research, and teaching"',
+        'Lorem ipsum dolor sit amet consectetur adipiscing elit montes dis nisi, cras metus senectus donec pretium condimentum parturient velit nostra.',
       image: '/assets/Images/milestone-1.png',
     },
     {
       year: '2020',
       description:
-        'The independent innovation and automatic manufacturing system was put into use',
+        'Lorem ipsum dolor sit amet consectetur adipiscing elit montes dis nisi, cras metus senectus donec pretium condimentum parturient velit nostra.',
       image: '/assets/Images/milestone-2.jpg',
     },
     {
       year: '2019',
       description:
-        'MZG established an intelligent R&D laboratory, and Midago officially entered a new field of smart storage products',
+        'Lorem ipsum dolor sit amet consectetur adipiscing elit montes dis nisi, cras metus senectus donec pretium condimentum parturient velit nostra.',
       image: '/assets/Images/milestone-3.jpg',
     },
     {
       year: '2018',
       description:
-        'The company’s new factory was completed and put into use, and the production capacity was greatly improved',
-      image: '/assets/Images/milestone-4.jpg',
+        'Lorem ipsum dolor sit amet consectetur adipiscing elit montes dis nisi, cras metus senectus donec pretium condimentum parturient velit nostra.',
+      image: '/assets/Images/milestone-1.png',
     },
     {
       year: '2017',
       description:
-        'The company’s new factory was completed and put into use, and the production capacity was greatly improved',
-      image: '/assets/Images/milestone-5.jpg',
+        'Lorem ipsum dolor sit amet consectetur adipiscing elit montes dis nisi, cras metus senectus donec pretium condimentum parturient velit nostra.',
+      image: '/assets/Images/milestone-2.jpg',
     },
     {
       year: '2016',
       description:
-        'The company’s new factory was completed and put into use, and the production capacity was greatly improved',
-      image: '/assets/Images/milestone-6.jpg',
+        'Lorem ipsum dolor sit amet consectetur adipiscing elit montes dis nisi, cras metus senectus donec pretium condimentum parturient velit nostra.',
+      image: '/assets/Images/milestone-3.jpg',
     },
   ];
 
@@ -61,10 +61,8 @@ const Milestones = () => {
         }}
       >
         <Typography
-          variant="h3"
           fontWeight={700}
-          fontFamily="arial"
-          sx={{ my: 2 }}
+          sx={{ fontSize: { xs: 24, sm: 32, md: 36, lg: 48 }, my: 2 }}
         >
           Milestones
         </Typography>

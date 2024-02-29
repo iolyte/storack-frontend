@@ -45,10 +45,8 @@ const OurTeam = () => {
         }}
       >
         <Typography
-          variant="h3"
           fontWeight={700}
-          fontFamily="arial"
-          sx={{ my: 2 }}
+          sx={{ fontSize: { xs: 24, sm: 32, md: 36, lg: 48 }, my: 2 }}
         >
           Our Team
         </Typography>

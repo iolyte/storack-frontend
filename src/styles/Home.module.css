@@ -10,11 +10,16 @@
 
 .text {
   position: absolute;
-  top: 30%;
-  left: 25%;
+  top: 25%;
+  left: 20%;
   text-align: center;
   margin: auto;
   padding: 30px;
+}
+
+.longImage {
+  width: 100%;
+  height: 800px;
 }
 
 .border-visible {
@@ -50,10 +55,27 @@
   color: black;
 }
 
+.logoImage{
+  width: 265px;
+  height: 50px;
+}
+
+/* @media (orientation: landscape) {
+  .text {
+    top: 10%;
+    left: 0%;
+    padding: 25px;
+  }
+  .longImage {
+    height: 500px;
+  }
+} */
+
 @media (max-width: 768px) {
   .text {
     top: 25%;
-    left: 15%;
+    left: 25%;
+    padding: 25px;
   }
   .text h6 {
     font-size: 10px;
@@ -65,7 +87,25 @@
   }
   .text button {
     border: 1px solid white;
-    padding: 5px 15px 5px 15px;
+    padding: 5px 10px 5px 10px;
     font-size: 10px;
+  }
+  .longImage {
+    height: 500px;
+  }
+}
+
+@media (max-width: 480px) {
+  .text {
+    top: 5%;
+    left: 5%;
+    padding: 15px;
+  }
+  .longImage {
+    height: 300px;
+  }
+  .logoImage {
+    width: 200px;
+    height: 50px;
   }
 }
