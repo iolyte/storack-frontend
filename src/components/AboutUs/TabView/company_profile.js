@@ -5,6 +5,13 @@ import CountersSection from '../countersSection';
 import CompanyCultureSection from '../companyCultureSection';
 
 const CompanyProfile = () => {
+  const aboutUs = [
+    'Storack India Overseas, a visionary enterprise, was established in [year] with a focus on pioneering product development, manufacturing, and exceptional service in the realm of creative DIY storage solutions. Specializing in home storage, we embody the philosophy of being "customer-centric, market-oriented." Our commitment to innovation is underscored by a robust production and technology platform, fueling continuous investment in creative technology and product development.',
+    'At Storack India Overseas, we take pride in our upgraded and inventive storage product system designed to cater flexibly to diverse customer and consumer demands. We have curated a comprehensive range of creative DIY storage products that not only elevate functionality but also add a touch of innovation to your living and working spaces.',
+    'Our products ensuring the highest standards, our company boasts a leading-edge quality monitoring system. Storack India Overseas has been accredited with the ISO9001 quality management system and the prestigious NSF certification for green environmental protection. Our unwavering commitment to quality sets us apart, making us a trusted name in the industry.',
+    'As we move forward, Storack India Overseas envisions collaborating with partners to build a green, intelligent, and innovative storage service system. Our aim is to create a warm, healthy, and comfortable living and working environment for all.',
+  ];
+
   return (
     <>
       <Box
@@ -15,71 +22,26 @@ const CompanyProfile = () => {
         }}
       >
         <Typography
-          variant="h3"
           fontWeight={700}
-          fontFamily="arial"
-          sx={{ my: 2 }}
+          sx={{ fontSize: { xs: 24, sm: 32, md: 36, lg: 48 }, my: 2 }}
         >
           About Storack
         </Typography>
       </Box>
 
-      <Box
-        sx={{
-          mx: 11,
-        }}
-      >
-        <Typography
-          variant="inherit"
-          fontFamily="arial"
-          fontSize={16}
-          lineHeight={1.75}
-          sx={{ mb: 3 }}
-        >
-          Shenzhen Meizhigao Technology Company Limited (MZG) was founded in
-          2002, which is a comprehensive enterprise focusing on product
-          development, manufacturing, sales and service in creative DIY storage
-          products. We are specialized in home storage range, and adhere to the
-          concept of "customer-centric, market-oriented", based on production,
-          technology innovation platform; continuously invest on development of
-          creative technology and products. We have our own upgraded & creative
-          storage product system; it meets demand from diﬀerent customers and
-          consumers ﬂexibly. MZG also has a leading quality monitoring system,
-          it obtained ISO9001 quality management system and NSF certiﬁcation of
-          green environmentalprotection. MZG was listed on the market in China
-          in 2015. It's one of the largest public companies in storage industry
-          in China.
-        </Typography>
-
-        <Typography
-          variant="inherit"
-          fontFamily="arial"
-          fontSize={16}
-          lineHeight={1.75}
-          sx={{ mb: 3 }}
-        >
-          We have won the trust and cooperation from global customers with our
-          constantly growing storage technology and innovation ability, good
-          ﬂexible customization capabilities and professional after sale
-          service. MZG also provide industry shelving business and family
-          shelving service for LOWES, DOSHISHA, NITORI in Japan, E–MART in South
-          Korea, Samsung and other well-known retailers, buyers, agents and
-          customers from nearly 30 countries and regions. At present, MZG has
-          become the leading organization & storage service provider.
-        </Typography>
-
-        <Typography
-          variant="inherit"
-          fontFamily="arial"
-          fontSize={16}
-          lineHeight={1.75}
-          sx={{ mb: 3 }}
-        >
-          We will keep working together with partners to build a green,
-          intelligent, innovative on storage service system in the future, and
-          to create a more warm, healthy, comfortable living and working
-          environment.
-        </Typography>
+      <Box mx={{ xs: 1, sm: 5, md: 10, lg: 20 }}>
+        {aboutUs.map((para, index) => (
+          <Typography
+            key={index}
+            variant="inherit"
+            fontFamily="arial"
+            fontSize={16}
+            lineHeight={1.75}
+            sx={{ mb: 3 }}
+          >
+            {para}
+          </Typography>
+        ))}
       </Box>
 
       <Divider sx={{ mt: 8 }} />
@@ -87,7 +49,7 @@ const CompanyProfile = () => {
       {/* Counters Section */}
       <Box
         sx={{
-          my: 8,
+          my: 5,
         }}
       >
         <CountersSection />

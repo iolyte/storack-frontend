@@ -2,6 +2,8 @@ import React from 'react';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import homeCss from '@/styles/Home.module.css';
+import uuid from 'react-uuid';
 
 const Header = (props) => {
   const menuBarLabel = [
@@ -39,11 +41,11 @@ const Header = (props) => {
       type: 'dropDown',
       label: 'PRODUCTS',
       id: '#products',
-      link: '#',
+      link: '/product',
       option: [
         {
           label: 'Company Profile',
-          link: '#',
+          link: '/product',
         },
         {
           label: 'Milestone',
@@ -59,23 +61,23 @@ const Header = (props) => {
         },
       ],
     },
-    {
-      type: 'text',
-      label: 'NEWS',
-      id: '#news',
-      link: '#',
-    },
+    // {
+    //   type: 'text',
+    //   label: 'NEWS',
+    //   id: '#news',
+    //   link: '#',
+    // },
     {
       type: 'text',
       label: 'SOLUTION',
       id: '#solution',
-      link: '#',
+      link: '/solutions',
     },
     {
       type: 'text',
       label: 'CONTACT US',
       id: '#contactUs',
-      link: '#',
+      link: '/contact-us',
     },
   ];
   return (
@@ -88,8 +90,7 @@ const Header = (props) => {
         <img
           src="/assets/logos/logo.png"
           style={{ paddingInline: '20px' }}
-          width={265}
-          height={50}
+          className={homeCss.logoImage}
           alt="Picture of the author"
         />
       </Navbar.Brand>
@@ -100,6 +101,7 @@ const Header = (props) => {
             menuBarLabel.map((item) => {
               return item.type === 'text' ? (
                 <Nav.Link
+                  key={uuid()}
                   id={item.id}
                   href={item.link}
                   style={{ paddingInline: '10px' }}
@@ -110,6 +112,7 @@ const Header = (props) => {
               ) : (
                 item.option.length > 0 && (
                   <NavDropdown
+                    key={uuid()}
                     title={item.label}
                     style={{ paddingInline: '10px' }}
                     id="basic-nav-dropdown"
@@ -118,6 +121,7 @@ const Header = (props) => {
                     {item.option.map((option) => {
                       return (
                         <NavDropdown.Item
+                          key={uuid()}
                           href={option.link}
                           className="text-uppercase"
                         >
