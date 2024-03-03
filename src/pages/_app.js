@@ -3,6 +3,7 @@ import '@/styles/globals.css';
 import { Layout } from '@/layouts/default/layout';
 import { ThemeProvider } from '@emotion/react';
 import { createTheme } from '@mui/material';
+import 'animate.css/animate.min.css';
 
 export default function App({ Component, pageProps }) {
   const theme = createTheme({

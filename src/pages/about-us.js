@@ -1,11 +1,17 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/legacy/image';
 import { Box } from '@mui/material';
 import Breadcrumb from '@/components/breadcrumb';
 import AboutUsTabView from '@/components/AboutUs/TabView/tabview';
+import { useSearchParams } from 'next/navigation';
+
+const TABS = ['company_profile', 'milestones', 'awards', 'our_team'];
 
 const AboutUs = () => {
   const [selectedTab, setSelectedTab] = useState('company_profile');
+
+  const searchParams = useSearchParams();
+  const tab = searchParams.get('tab');
 
   const handleTabChange = (event, newValue) => {
     setSelectedTab(newValue);
@@ -17,6 +23,12 @@ const AboutUs = () => {
       return word.charAt(0).toUpperCase() + word.slice(1);
     })
     .join(' ');
+
+  useEffect(() => {
+    if (tab && TABS.includes(tab)) {
+      setSelectedTab(tab);
+    }
+  }, [tab]);
 
   return (
     <>

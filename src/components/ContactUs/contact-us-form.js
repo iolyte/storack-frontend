@@ -109,10 +109,9 @@ const ContactUsForm = () => {
             <Box sx={{ display: 'flex', justifyContent: 'center' }}>
               <LoadingButton
                 type="submit"
-                disabled={!formik.isValid || !formik.dirty}
                 loading={formik.isSubmitting}
                 variant="contained"
-                sx={{ px: 10, py: 1.25 }}
+                sx={{ px: 10, py: 1.25, color: 'white' }}
               >
                 Submit
               </LoadingButton>
