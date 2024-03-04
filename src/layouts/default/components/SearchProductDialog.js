@@ -47,9 +47,7 @@ const SearchProductDialog = ({ open, handleClose }) => {
     >
       {/* <DialogTitle>What are you looking for?</DialogTitle> */}
       <DialogContent>
-        <DialogContentText>
-          Search for products, brands and more
-        </DialogContentText>
+        <DialogContentText>Search for products</DialogContentText>
 
         <TextField
           autoFocus
@@ -120,6 +118,12 @@ const SearchProductDialog = ({ open, handleClose }) => {
             </List>
           );
         })}
+
+        {searchedProducts.length === 0 && (
+          <Typography variant="h6" sx={{ textAlign: 'center', my: 3 }}>
+            No products found
+          </Typography>
+        )}
       </Paper>
     </Dialog>
   );

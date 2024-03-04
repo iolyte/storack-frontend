@@ -40,28 +40,10 @@ const Header = (props) => {
       link: '/',
     },
     {
-      type: 'dropDown',
+      type: 'text',
       label: 'About Us',
       id: '#aboutUs',
       link: '/about-us',
-      option: [
-        {
-          label: 'Company Profile',
-          link: '/about-us?tab=company-profile',
-        },
-        {
-          label: 'Milestone',
-          link: '/about-us?tab=milestone',
-        },
-        {
-          label: 'Awards',
-          link: '/about-us?tab=awards',
-        },
-        {
-          label: 'Our Team',
-          link: '/about-us?tab=our-team',
-        },
-      ],
     },
     {
       type: 'dropDown',

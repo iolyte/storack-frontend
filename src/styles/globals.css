@@ -3,7 +3,19 @@
 }
 
 .hover-card:hover {
-  background-color: #72C240; /* Replace with your primary color */
+  background-color: #72c240; /* Replace with your primary color */
   color: #fff; /* Optional: Change text color on hover */
   /* Add any other styles you want to apply on hover */
+}
+
+.square-card {
+  background-color: #ffffff75; /* Set your desired background color */
+  padding: 20px; /* Adjust the padding as needed */
+  border: 1px solid #000000; /* Set your desired border color and width */
+  border-radius: 5px; /* Adjust the border radius as needed */
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -100%);
 }

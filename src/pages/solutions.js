@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactPlayer from 'react-player';
 import Image from 'next/legacy/image';
+import Styles from '@/styles/Home.module.css';
 import {
   Box,
   Typography,
@@ -16,6 +17,7 @@ import {
 import Breadcrumb from '@/components/breadcrumb';
 import Iconify from '@/components/iconify';
 import BannerImage from '@/components/Home/BannerImage';
+import { AnimationOnScroll } from 'react-animation-on-scroll';
 
 const Solutions = () => {
   const advantagesData = [
@@ -43,46 +45,43 @@ const Solutions = () => {
 
   const problemsSolvingData = [
     {
-      title: 'Electronic Industry',
-      imageUrl: '/assets/Images/solutions-1.jpg',
+      title: 'Electronics sector',
+      imageUrl: '/assets/Images/microwave-storage.jpg',
       list: [
-        'Electronics Industry, Products classification is difficult',
-        'The storage space usage is low and the cost is high',
-        'The storage environment is must be ESD, dust-proof, weight release, and impact-proof',
-        'Improve traditional shelving can not be adjusted freely',
-        'Poor turnover flexibility leads to low work efficiency',
+        'Within the realm of electronics, categorizing products poses a significant challenge.',
+        'The utilization of storage space remains inefficient, accompanied by high costs.',
+        'Ensuring an optimal storage environment necessitates compliance with ESD standards, dust-proofing measures, weight distribution considerations, and resistance to impacts.',
+        'The lack of adaptability results in poor turnover flexibility, consequently hampering overall work efficiency.',
       ],
     },
     {
-      title: 'Retail Industry',
-      imageUrl: '/assets/Images/solutions-1.jpg',
+      title: 'Retail industry',
+      imageUrl: '/assets/Images/retail_industry.jpg',
       list: [
-        'Retail Industry, Low utilization of display space and small display space',
-        'Good is diversified and easy to pick up',
-        'The traditional shelf to move is difficult have a health dead corner',
-        'The use of space display flexibly adjusted is bad',
-        'Carry goods from warehouse to the store, waste time and labor',
+        'With a focus on flexibility, our solutions allow for the efficient adjustment of display space, providing retailers with the tools to showcase their diverse range of products effortlessly.',
+        'The inflexibility in adjusting display space further exacerbates the inefficiencies within the retail environment. We address these challenges head-on, offering innovative solutions to enhance display efficiency and streamline operations in the retail sector.',
+        'Our adaptable shelving systems eliminate dead corners, ensuring a seamless and aesthetically pleasing presentation of goods.',
+        'Additionally, our innovative designs are geared towards reducing the time and labour involved in the transportation of goods from the warehouse to the store.',
       ],
     },
     {
-      title: 'Office System',
-      imageUrl: '/assets/Images/solutions-1.jpg',
+      title: 'Office system',
+      imageUrl: '/assets/Images/Office-2.jpg',
       list: [
-        'Business Office , Goods, kinds, sizes, classification management is difficult',
-        'Messy accumulation, affect the company features',
-        'Low utilization of office storage space, waste of space',
-        'Documents is heavy, Wood shelves easy to deformation',
-        'Wooden shelves is bulky and cannot be adjusted freely',
+        'We specialize in providing efficient office storage solutions designed to streamline your business operations.',
+        'With a focus on maximizing storage space utilization, our solutions eliminate unnecessary waste and create an organized environment that reflects the professionalism of your company.',
+        'Moreover, our storage solutions are engineered to address the challenges posed by heavy documents. Say goodbye to deformation concerns, as our shelves are designed for durability and reliability.',
+        'The adaptability of our shelving systems ensures that you have the freedom to configure your office space efficiently, offering a flexible solution that meets the unique needs of your business.',
       ],
     },
     {
-      title: 'Hotel Dining',
-      imageUrl: '/assets/Images/solutions-1.jpg',
+      title: 'Hotel dinning',
+      imageUrl: '/assets/Images/kitchen-vertical.jpg',
       list: [
-        'Hotel Catering，Food, tableware is variety, Difficult to classify manage',
-        'Its not Ventilated and breathable, the food is easy to stale',
-        'Super load-bearing, goods is heavy, handling and turnover time laborious Control the temperature of storage is difficult and it is easy to deteriorate. After dinning, other space oil pollution cleaning is difficult',
-        'High requirements and healthy',
+        'Our storage systems are designed for super load-bearing capabilities, alleviating the laborious handling of heavy goods and expediting turnover times.',
+        'Temperature control is simplified, mitigating the risk of food deterioration and ensuring the preservation of freshness.',
+        'Additionally, our solutions are tailored to meet high standards of hygiene, facilitating easy clean up post-dining.',
+        'Bid farewell to the difficulties of oil pollution cleaning in other spaces, as our designs prioritize cleanliness and ease of maintenance.',
       ],
     },
   ];
@@ -93,32 +92,16 @@ const Solutions = () => {
       imageUrl: '/assets/Images/feature-1.jpg',
     },
     {
-      title: 'Easy to install',
-      imageUrl: '/assets/Images/feature-1.jpg',
+      title: 'Height adjustable',
+      imageUrl: '/assets/Images/feature-2.jpg',
     },
     {
-      title: 'Durable',
-      imageUrl: '/assets/Images/feature-1.jpg',
-    },
-    {
-      title: 'Customized',
-      imageUrl: '/assets/Images/feature-1.jpg',
-    },
-    {
-      title: 'Multi-function',
-      imageUrl: '/assets/Images/feature-1.jpg',
-    },
-    {
-      title: 'Space saving',
-      imageUrl: '/assets/Images/feature-1.jpg',
+      title: 'Length extendable',
+      imageUrl: '/assets/Images/feature-3.jpg',
     },
     {
       title: 'Environmental friendly',
-      imageUrl: '/assets/Images/feature-1.jpg',
-    },
-    {
-      title: 'Cost saving',
-      imageUrl: '/assets/Images/feature-1.jpg',
+      imageUrl: '/assets/Images/feature-4.jpg',
     },
   ];
 
@@ -239,6 +222,7 @@ const Solutions = () => {
                         alt={item.title}
                         width={600}
                         height={400}
+                        className={`${Styles.zoom}`}
                       />
                     </Grid>
                     <Grid
@@ -248,36 +232,41 @@ const Solutions = () => {
                       md={6}
                       sx={{ px: 5, order: getOrder(index) }}
                     >
-                      <Typography
-                        variant="h4"
-                        fontWeight={700}
-                        textTransform="capitalize"
-                        sx={{
-                          fontSize: { xs: 22, sm: 26, md: 30, lg: 34 },
-                          mt: 1,
-                        }}
+                      <AnimationOnScroll
+                        animateIn={Styles.mainClass}
+                        animateOnce
                       >
-                        {item.title}
-                      </Typography>
-                      <List sx={{ mb: 2 }}>
-                        {item?.list?.map((item, index) => (
-                          <ListItem disableGutters dense>
-                            <ListItemIcon>
-                              <Iconify icon="solar:alt-arrow-right-bold-duotone" />
-                            </ListItemIcon>
-                            <ListItemText
-                              primary={item}
-                              primaryTypographyProps={{
-                                fontSize: { xs: 12, sm: 14, md: 16, lg: 18 },
-                                marginLeft: -3,
-                                fontWeight: 'medium',
-                                letterSpacing: 0,
-                                lineHeight: { xs: 1.2 },
-                              }}
-                            />
-                          </ListItem>
-                        ))}
-                      </List>
+                        <Typography
+                          variant="h4"
+                          fontWeight={700}
+                          textTransform="capitalize"
+                          sx={{
+                            fontSize: { xs: 22, sm: 26, md: 30, lg: 34 },
+                            mt: 1,
+                          }}
+                        >
+                          {item.title}
+                        </Typography>
+                        <List sx={{ mb: 2 }}>
+                          {item?.list?.map((item, index) => (
+                            <ListItem disableGutters dense>
+                              <ListItemIcon>
+                                <Iconify icon="solar:alt-arrow-right-bold-duotone" />
+                              </ListItemIcon>
+                              <ListItemText
+                                primary={item}
+                                primaryTypographyProps={{
+                                  fontSize: { xs: 12, sm: 14, md: 16, lg: 18 },
+                                  marginLeft: -3,
+                                  fontWeight: 'medium',
+                                  letterSpacing: 0,
+                                  lineHeight: { xs: 1.2 },
+                                }}
+                              />
+                            </ListItem>
+                          ))}
+                        </List>
+                      </AnimationOnScroll>
                     </Grid>
                   </Grid>
                 </Grid>
@@ -355,7 +344,10 @@ const Solutions = () => {
                     height={228}
                   />
 
-                  <Typography variant="body1" sx={{ my: 2 }}>
+                  <Typography
+                    variant="body1"
+                    sx={{ my: 2, textTransform: 'capitalize' }}
+                  >
                     {item.title}
                   </Typography>
                 </CardContent>

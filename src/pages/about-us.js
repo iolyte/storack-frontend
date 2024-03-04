@@ -4,6 +4,7 @@ import { Box } from '@mui/material';
 import Breadcrumb from '@/components/breadcrumb';
 import AboutUsTabView from '@/components/AboutUs/TabView/tabview';
 import { useSearchParams } from 'next/navigation';
+import CompanyProfile from '@/components/AboutUs/TabView/company_profile';
 
 const TABS = ['company_profile', 'milestones', 'awards', 'our_team'];
 
@@ -48,18 +49,15 @@ const AboutUs = () => {
       </Box>
 
       <Box>
-        <Breadcrumb
-          secondaryTitle="About Us"
-          secondaryTitleLink="/about-us"
-          label={formattedSelectedTab}
-        />
+        <Breadcrumb secondaryTitle="About Us" secondaryTitleLink="/about-us" />
       </Box>
 
       <Box>
-        <AboutUsTabView
+        {/* <AboutUsTabView
           selectedTab={selectedTab}
           handleTabChange={handleTabChange}
-        />
+        /> */}
+        <CompanyProfile />
       </Box>
     </>
   );
