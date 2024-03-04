@@ -3,6 +3,7 @@ import { useFormik } from 'formik';
 import { Box, Grid, TextField, Button } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 import * as Yup from 'yup';
+import { contactUsForm } from '@/pages/api/contact';
 
 const ContactUsForm = () => {
   const formik = useFormik({
@@ -20,9 +21,18 @@ const ContactUsForm = () => {
       address: Yup.string(),
       message: Yup.string(),
     }),
-    onSubmit: (values) => {
-      console.log('Form Values 1.1.1:', values);
-      formik.resetForm();
+    onSubmit: async (values) => {
+      try {
+        const response = await contactUsForm(values);
+        console.log('response: ', response);
+        if (response.status === 200) {
+          alert('Your message has been sent successfully!');
+        }
+        formik.resetForm();
+      } catch (error) {
+        console.log('Error:', error);
+        alert('Something went wrong. Please try again later!');
+      }
     },
   });
 
@@ -109,10 +119,9 @@ const ContactUsForm = () => {
             <Box sx={{ display: 'flex', justifyContent: 'center' }}>
               <LoadingButton
                 type="submit"
-                disabled={!formik.isValid || !formik.dirty}
                 loading={formik.isSubmitting}
                 variant="contained"
-                sx={{ px: 10, py: 1.25 }}
+                sx={{ px: 10, py: 1.25, color: 'white' }}
               >
                 Submit
               </LoadingButton>

@@ -3,7 +3,7 @@ import { Box, Tab, Button } from '@mui/material';
 import { TabContext, TabList, TabPanel } from '@mui/lab';
 import CompanyProfile from './company_profile';
 import Milestones from './milestones';
-import Rewards from './rewards';
+import Awards from './awards';
 import OurTeam from './our_team';
 
 const AboutUsTabView = ({ selectedTab, handleTabChange }) => {
@@ -26,7 +26,7 @@ const AboutUsTabView = ({ selectedTab, handleTabChange }) => {
               sx={{ px: 2 }}
             />
             <Tab label="Milestones" value="milestones" sx={{ px: 2 }} />
-            <Tab label="Rewards" value="rewards" sx={{ px: 2 }} />
+            <Tab label="Awards" value="awards" sx={{ px: 2 }} />
             <Tab label="Our Team" value="our_team" sx={{ px: 2 }} />
           </TabList>
         </Box>
@@ -39,8 +39,8 @@ const AboutUsTabView = ({ selectedTab, handleTabChange }) => {
           <Milestones />
         </TabPanel>
 
-        <TabPanel value="rewards">
-          <Rewards />
+        <TabPanel value="awards">
+          <Awards />
         </TabPanel>
 
         <TabPanel value="our_team">

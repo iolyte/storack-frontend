@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import uuid from 'react-uuid';
+import homeCss from '@/styles/Home.module.css';
+import Accordions from './Accordion';
 
 const Footer = (props) => {
   const aboutNavigationLabel = [
@@ -112,7 +114,9 @@ const Footer = (props) => {
   ];
 
   return (
-    <footer className="page-footer font-small blue pt-4 bg-dark text-white">
+    <footer
+      className={`page-footer font-small blue pt-4 bg-dark text-white ${homeCss.footerMargin}`}
+    >
       <div className="container-fluid text-center text-md-left">
         <div className="row">
           <div className="col-md-4 mt-md-0 mt-3 text-start">
@@ -137,7 +141,7 @@ const Footer = (props) => {
 
           <hr className="clearfix w-100 d-md-none pb-0" />
 
-          <div className="col-md-2 mb-md-0 mb-3 text-start">
+          <div className="col-md-2 mb-md-0 mb-3 text-start d-none d-md-block">
             <h5 className="text-uppercase mt-md-3">About Us</h5>
             <ul className="list-unstyled mt-md-4">
               {aboutNavigationLabel.length > 0 &&
@@ -156,7 +160,10 @@ const Footer = (props) => {
             </ul>
           </div>
 
-          <div className="col-md-2 mb-md-0 mb-3 text-start">
+          <Accordions title="ABOUT US" list={aboutNavigationLabel} />
+          <hr className="clearfix w-100 d-md-none pb-0" />
+
+          <div className="col-md-2 mb-md-0 mb-3 text-start d-none d-md-block">
             <h5 className="text-uppercase mt-md-3">Products</h5>
             <ul className="list-unstyled mt-md-4">
               {productsNavigationLabel.length > 0 &&
@@ -175,7 +182,10 @@ const Footer = (props) => {
             </ul>
           </div>
 
-          <div className="col-md-2 mb-md-0 mb-3 text-start">
+          <Accordions title="PRODUCT" list={productsNavigationLabel} />
+          <hr className="clearfix w-100 d-md-none pb-0" />
+
+          <div className="col-md-2 mb-md-0 mb-3 text-start d-none d-md-block">
             <h5 className="text-uppercase mt-md-3">Scenarios</h5>
             <ul className="list-unstyled mt-md-4">
               {scenariosNavigationLabel.length > 0 &&
@@ -194,33 +204,7 @@ const Footer = (props) => {
             </ul>
           </div>
 
-          {/* <div className="col-md-2 mb-md-0 mb-3 text-start">
-            <h5 className="text-uppercase mt-md-3">News</h5>
-            <ul className="list-unstyled mt-md-4">
-              {newsNavigationLabel.length > 0 &&
-                newsNavigationLabel.map((item) => {
-                  return (
-                    <li key={uuid()}>
-                      <a
-                        href={item.link}
-                        className="text-secondary text-decoration-none"
-                      >
-                        {item.label}
-                      </a>
-                    </li>
-                  );
-                })}
-            </ul>
-          </div> */}
-
-          {/* <div className="col-md-1 mb-md-0 mb-3 mt-md-3">
-            <img
-              src="/assets/logos/logo.png"
-              width={100}
-              height={100}
-              alt="QR"
-            />
-          </div> */}
+          <Accordions title="SCENARIOS" list={scenariosNavigationLabel} />
 
           <hr
             className="clearfix w-100 mt-3 pb-0 text-center"

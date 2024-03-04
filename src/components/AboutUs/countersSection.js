@@ -41,7 +41,7 @@ const CountersSection = () => {
       <Grid container spacing={2}>
         {counterData.map(({ title, subtitle, count, sign }, index) => {
           return (
-            <Grid item xs={6} sm={4} md={2.4} key={index}>
+            <Grid item xs={12} sm={4} md={2.4} key={index}>
               <Box
                 sx={{
                   minHeight: 100,
