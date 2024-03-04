@@ -15,6 +15,7 @@ import {
 } from '@mui/material';
 import Breadcrumb from '@/components/breadcrumb';
 import Iconify from '@/components/iconify';
+import BannerImage from '@/components/Home/BannerImage';
 
 const Solutions = () => {
   const advantagesData = [
@@ -131,51 +132,16 @@ const Solutions = () => {
       <Box
         sx={{
           width: '100%',
-          height: '100vh',
+          height: '70vh',
           position: 'relative',
-          backgroundImage: `url('/assets/Images/solutions-banner.jpg')`,
-          backgroundSize: 'cover',
-          textAlign: 'start',
-          color: '#fff',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'end',
-          flexDirection: 'column',
         }}
       >
         <Image
           src={'/assets/Images/solutions-banner.jpg'}
           alt={'Solutions Banner Image'}
-          layout="fill"
-          objectFit="cover"
+          layout="fill" // This ensures that the image takes up 100% of its parent container
+          objectFit="cover" // This ensures that the image covers the entire container while maintaining its aspect ratio
         />
-        {/* <Box
-          sx={{
-            width: '42%',
-            m: 3,
-            p: 3,
-            backgroundColor: 'rgba(0, 0, 0, 0.5)',
-            borderRadius: 3,
-          }}
-        >
-          <Typography variant="h3" fontWeight={700} sx={{ my: 3 }}>
-            OEM / ODM solution
-          </Typography>
-          <Typography variant="body2">
-            Storack Solutions specializes in crafting bespoke OEM/ODM storage
-            solutions, ensuring high-quality products and professional services.
-            For tailored storage solutions that meet your specific needs,
-            contact us today.
-          </Typography>
-          <Button
-            href="/contact-us"
-            variant="contained"
-            color="secondary"
-            sx={{ my: 3 }}
-          >
-            Contact Us
-          </Button>
-        </Box> */}
       </Box>
 
       {/* Breadcrumb */}
@@ -205,7 +171,7 @@ const Solutions = () => {
       <Box sx={{ m: 2 }}>
         <Grid container spacing={5}>
           {advantagesData.map((item, index) => (
-            <Grid item xs={6} sm={4} md={3} lg={2.4}>
+            <Grid item xs={6} sm={6} md={3} lg={2.4}>
               <Card>
                 <CardContent
                   sx={{
@@ -267,7 +233,7 @@ const Solutions = () => {
                       alignItems: 'start',
                     }}
                   >
-                    <Grid item xs={12} sm={6} sx={{ px: 2 }}>
+                    <Grid item xs={12} sm={12} md={6} sx={{ px: 2 }}>
                       <Image
                         src={item.imageUrl}
                         alt={item.title}
@@ -278,7 +244,8 @@ const Solutions = () => {
                     <Grid
                       item
                       xs={12}
-                      sm={6}
+                      sm={12}
+                      md={6}
                       sx={{ px: 5, order: getOrder(index) }}
                     >
                       <Typography

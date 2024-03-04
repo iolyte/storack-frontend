@@ -19,7 +19,7 @@ const responsive = {
 
 const NewsBox = (props) => {
   return (
-    <div style={{ width: '90%', margin: 'auto' }}>
+    <div style={{ width: '90%', margin: 'auto', display: 'block' }}>
       <Carousel
         showDots={true}
         arrows={false}

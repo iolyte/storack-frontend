@@ -5,114 +5,109 @@ import Stack from '@mui/material/Stack';
 import Link from '@mui/material/Link';
 import 'react-multi-carousel/lib/styles.css';
 import ProductSideBar from './ProductSideBar';
+import React, { useEffect, useState } from 'react';
+import { allProduct } from '@/pages/api/product';
+import { useSearchParams } from 'next/navigation';
+import Image from 'next/image';
 
 const ProductItem = (props) => {
-  const videoDetails = [
-    {
-      title: 'Electronic Industry',
-      imageUrl: '/assets/Images/video-1.jpg',
-      link: '/product-details',
-    },
-    {
-      title: 'Retail Industry',
-      imageUrl: '/assets/Images/video-2.jpg',
-      link: '/product-details',
-    },
-    {
-      title: 'Electronic Industry',
-      imageUrl: '/assets/Images/video-1.jpg',
-      link: '/product-details',
-    },
-    {
-      title: 'Retail Industry',
-      imageUrl: '/assets/Images/video-2.jpg',
-      link: '/product-details',
-    },
-    {
-      title: 'Electronic Industry',
-      imageUrl: '/assets/Images/video-1.jpg',
-      link: '/product-details',
-    },
-    {
-      title: 'Retail Industry',
-      imageUrl: '/assets/Images/video-2.jpg',
-      link: '/product-details',
-    },
-    {
-      title: 'Electronic Industry',
-      imageUrl: '/assets/Images/video-1.jpg',
-      link: '/product-details',
-    },
-    {
-      title: 'Retail Industry',
-      imageUrl: '/assets/Images/video-2.jpg',
-      link: '/product-details',
-    },
-    {
-      title: 'Electronic Industry',
-      imageUrl: '/assets/Images/video-1.jpg',
-      link: '/product-details',
-    },
-    {
-      title: 'Retail Industry',
-      imageUrl: '/assets/Images/video-2.jpg',
-      link: '/product-details',
-    },
-    {
-      title: 'Electronic Industry',
-      imageUrl: '/assets/Images/video-1.jpg',
-      link: '/product-details',
-    },
-    {
-      title: 'Retail Industry',
-      imageUrl: '/assets/Images/video-2.jpg',
-      link: '/product-details',
-    },
-    {
-      title: 'Electronic Industry',
-      imageUrl: '/assets/Images/video-1.jpg',
-      link: '/product-details',
-    },
-    {
-      title: 'Retail Industry',
-      imageUrl: '/assets/Images/video-2.jpg',
-      link: '/product-details',
-    },
-  ];
+  const [productDetails, setProductDetails] = useState({});
+  const [page, setPage] = useState(1);
+  const [productCount, setProductCount] = useState(0);
+
+  const searchParams = useSearchParams();
+  const subCatId = searchParams.get('sub_cat_id');
+  const catId = searchParams.get('cat_id');
+  const subcategoryId = subCatId !== null ? subCatId : null;
+  const categoryId = catId !== null ? catId : null;
+
+  const base_url = process.env.NEXT_PUBLIC_BASE_URL;
+
+  const handleChange = (event, value) => {
+    setPage(value);
+    getAllProduct(value, '', categoryId, subcategoryId);
+  };
+
+  useEffect(() => {
+    getAllProduct(page, '', categoryId, subcategoryId);
+  }, [page, catId, subCatId]);
+
+  const getAllProduct = async (
+    page = 1,
+    searchItem = '',
+    categoryId = null,
+    subcategoryId = null
+  ) => {
+    const res = await allProduct(page, searchItem, categoryId, subcategoryId);
+    setProductDetails(res);
+    setProductCount(productDetails.count);
+  };
+
+  const totalPage = Math.ceil(productCount / productDetails.pageSize);
 
   return (
     <>
       <Grid container spacing={2}>
-        <Grid item xs={3}>
+        <Grid item xs={12} sm={3} md={3}>
           <ProductSideBar />
         </Grid>
-        <Grid item xs={9}>
+        <Grid item xs={12} sm={9} md={9}>
           <Grid container spacing={2}>
-            {videoDetails.map((item, index) => {
-              return (
-                <Grid item xs={12} sm={6} md={4}>
-                  <Link href={item.link} underline="none">
-                    <Box
-                      sx={{
-                        p: 3,
-                        border: '1px solid',
-                        borderRadius: 2,
-                        borderColor: 'gray',
-                      }}
+            {productDetails.products && productDetails.products.length > 0 ? (
+              productDetails.products.map((item, index) => {
+                return (
+                  <Grid item xs={12} sm={6} md={4}>
+                    <Link
+                      href={`/product-details?product_id=${item.id}`}
+                      underline="none"
                     >
-                      <Typography textAlign={'center'} sx={{ mb: 2 }}>
-                        {item.title}
-                      </Typography>
-                      <img src={item.imageUrl} width="100%" height="100%" />
-                    </Box>
-                  </Link>
-                </Grid>
-              );
-            })}
+                      <Box
+                        sx={{
+                          p: 3,
+                          border: '1px solid',
+                          borderRadius: 2,
+                          borderColor: 'gray',
+                        }}
+                      >
+                        <Typography
+                          textAlign={'center'}
+                          sx={{ mb: 2 }}
+                          style={{ color: 'black' }}
+                        >
+                          {item.name}
+                        </Typography>
+                        <img
+                          src={`${base_url}/${item.images[0]}`}
+                          width="100%"
+                          height="100%"
+                        />
+                      </Box>
+                    </Link>
+                  </Grid>
+                );
+              })
+            ) : (
+              <Box
+                sx={{
+                  margin: 'auto',
+                }}
+              >
+                <img
+                  src={'/assets/Images/no-product.png'}
+                  style={{ width: '100%', height: '100%' }}
+                />
+              </Box>
+            )}
           </Grid>
-          <Stack spacing={2} sx={{ py: 3 }}>
-            <Pagination count={10} style={{ margin: 'auto' }} />
-          </Stack>
+          {productDetails.products && productDetails.products.length > 0 && (
+            <Stack spacing={2} sx={{ py: 3 }}>
+              <Pagination
+                count={totalPage ? totalPage : 1}
+                style={{ margin: 'auto' }}
+                onChange={handleChange}
+              />
+            </Stack>
+          )}
         </Grid>
       </Grid>
     </>
