@@ -139,9 +139,9 @@ const Footer = (props) => {
             </div>
           </div>
 
-          <hr className="clearfix w-100 d-md-none pb-0" />
+          {/* <hr className="clearfix w-100 d-md-none pb-0" /> */}
 
-          <div className="col-md-2 mb-md-0 mb-3 text-start d-none d-md-block">
+          {/* <div className="col-md-2 mb-md-0 mb-3 text-start d-none d-md-block">
             <h5 className="text-uppercase mt-md-3">About Us</h5>
             <ul className="list-unstyled mt-md-4">
               {aboutNavigationLabel.length > 0 &&
@@ -159,8 +159,8 @@ const Footer = (props) => {
                 })}
             </ul>
           </div>
+          <Accordions title="ABOUT US" list={aboutNavigationLabel} /> */}
 
-          <Accordions title="ABOUT US" list={aboutNavigationLabel} />
           <hr className="clearfix w-100 d-md-none pb-0" />
 
           <div className="col-md-2 mb-md-0 mb-3 text-start d-none d-md-block">
@@ -183,9 +183,9 @@ const Footer = (props) => {
           </div>
 
           <Accordions title="PRODUCT" list={productsNavigationLabel} />
-          <hr className="clearfix w-100 d-md-none pb-0" />
+          {/* <hr className="clearfix w-100 d-md-none pb-0" /> */}
 
-          <div className="col-md-2 mb-md-0 mb-3 text-start d-none d-md-block">
+          {/* <div className="col-md-2 mb-md-0 mb-3 text-start d-none d-md-block">
             <h5 className="text-uppercase mt-md-3">Scenarios</h5>
             <ul className="list-unstyled mt-md-4">
               {scenariosNavigationLabel.length > 0 &&
@@ -202,9 +202,8 @@ const Footer = (props) => {
                   );
                 })}
             </ul>
-          </div>
-
-          <Accordions title="SCENARIOS" list={scenariosNavigationLabel} />
+          </div> */}
+          {/* <Accordions title="SCENARIOS" list={scenariosNavigationLabel} /> */}
 
           <hr
             className="clearfix w-100 mt-3 pb-0 text-center"

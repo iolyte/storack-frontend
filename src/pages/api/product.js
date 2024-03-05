@@ -7,7 +7,9 @@ export const allProduct = async (
   searchItem = '',
   categoryId = null,
   subcategoryId = null,
-  pageSize = 16
+  pageSize = 16,
+  isHotProduct = false,
+  isTopProduct = false
 ) => {
   const config = {
     categoryId: categoryId,

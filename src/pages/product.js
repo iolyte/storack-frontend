@@ -55,7 +55,7 @@ const Product = () => {
                   priority={true}
                   layout="fill" // This ensures that the image takes up 100% of its parent container
                   objectFit="cover" // This ensures that the image covers the entire container while maintaining its aspect ratio
-                  style={{ margin: '10px' }}
+                  style={{ margin: '10px', padding: '10px' }}
                 />
               </Grid>
             );

@@ -10,7 +10,9 @@ import homeCss from '@/styles/Home.module.css';
 import ArrowForwardIosSharpIcon from '@mui/icons-material/ArrowForwardIosSharp';
 import MuiAccordion from '@mui/material/Accordion';
 import MuiAccordionSummary from '@mui/material/AccordionSummary';
-import { getAllCategory } from '@/pages/api/product';
+import { allProduct, getAllCategory } from '@/pages/api/product';
+
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 const responsive = {
   desktop: {
@@ -62,39 +64,38 @@ const AccordionSummary = styled((props) => (
 const ProductSideBar = () => {
   const [category, setCategory] = React.useState([]);
 
-  React.useEffect(() => {
-    allCategory();
-  }, []);
+  const [hotItems, setHotItems] = React.useState([]);
 
   const allCategory = async () => {
     const res = await getAllCategory();
     setCategory(res);
   };
 
-  const topPicks = [
-    {
-      name: 'box-1',
-      link: '/assets/Images/box-1.jpg',
-    },
-    {
-      name: 'box-2',
-      link: '/assets/Images/box-2.jpg',
-    },
-    {
-      name: 'box-3',
-      link: '/assets/Images/box-3.jpg',
-    },
-    {
-      name: 'box-4',
-      link: '/assets/Images/box-4.jpg',
-    },
-  ];
+  const getHotItems = async () => {
+    const response = await allProduct(1, '', null, null, 5, true, false);
+
+    const temp = response.products.map((item, index) => {
+      return {
+        id: item?.id,
+        name: item?.name || 'Hot Product',
+        link: `${BASE_URL}/${item?.images[0]}`,
+      };
+    });
+
+    setHotItems(temp);
+  };
 
   const [expanded, setExpanded] = React.useState('');
 
   const handleChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
   };
+
+  React.useEffect(() => {
+    allCategory();
+    getHotItems();
+  }, []);
+
   return (
     <>
       <Box width={'100%'}>
@@ -151,21 +152,23 @@ const ProductSideBar = () => {
             autoPlaySpeed={5000}
             keyBoardControl={true}
           >
-            {topPicks.map((item, index) => (
+            {hotItems.map((item, index) => (
               <Box
                 key={index}
                 sx={{
                   width: '100%',
                 }}
               >
-                <img
-                  src={item.link}
-                  className={`${homeCss.zoom}`}
-                  style={{
-                    width: '100%',
-                    height: '100%',
-                  }}
-                />
+                <Link href={`/product-details?product_id=${item.id}`}>
+                  <img
+                    src={item.link}
+                    className={`${homeCss.zoom}`}
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                    }}
+                  />
+                </Link>
               </Box>
             ))}
           </Carousel>

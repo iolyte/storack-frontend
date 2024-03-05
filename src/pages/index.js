@@ -59,19 +59,43 @@ export default function Home() {
   ];
 
   const image = {
-    name: 'img',
-    link: '/assets/Images/tumb-1.jpg',
+    name: 'Living Room Storage',
+    link: '/assets/Images/Home/living-room.jpg',
     title: 'LIVING ROOM STORAGE',
     description: 'Storage Make the space more valuable',
     borderVisible: false,
   };
 
   const image2 = {
-    name: 'img',
-    link: '/assets/Images/tumb-1.jpg',
-    title: 'LIVING ROOM STORAGE',
+    name: 'Bathroom Storage',
+    link: '/assets/Images/Home/bathroom-storage.jpg',
+    title: 'BATHROOM STORAGE',
     description: 'Storage Make the space more valuable',
     borderVisible: true,
+  };
+
+  const image3 = {
+    name: 'Warehouse Storage',
+    link: '/assets/Images/Home/warehouse-storage.jpg',
+    title: 'WAREHOUSE STORAGE',
+    description: 'Storage Make the space more valuable',
+    borderVisible: false,
+  };
+
+  const image4 = {
+    name: 'Industrial Storage',
+    link: '/assets/Images/Home/industrial-storage.jpg',
+    title: 'INDUSTRIAL STORAGE',
+    description: 'Storage Make the space more valuable',
+    borderVisible: true,
+  };
+
+  const image5 = {
+    name: 'Garage Storage',
+    link: '/assets/Images/Home/garage-storage.jpg',
+    title: 'GARAGE STORAGE',
+    description: 'Storage Make the space more valuable',
+    borderVisible: false,
   };
 
   const ImageList = [
@@ -126,12 +150,16 @@ export default function Home() {
         {sliderImage.map((item) => {
           return (
             <Carousel.Item interval={3000} key={uuid()}>
-              <img className="d-block w-100 h-80" src={item.link} text={item.name} />
-              <Carousel.Caption>
+              <img
+                className="d-block w-100 h-80"
+                src={item.link}
+                text={item.name}
+              />
+              {/* <Carousel.Caption>
                 <div className="square-card">
                   <Typography>{item.text}</Typography>
                 </div>
-              </Carousel.Caption>
+              </Carousel.Caption> */}
             </Carousel.Item>
           );
         })}
@@ -147,11 +175,11 @@ export default function Home() {
       <AnimationOnScroll animateIn={homeCss.mainClass} animateOnce>
         <ProductBox items={topPicks} title="Bathroom Storage Solution" />
       </AnimationOnScroll>
-      <BannerImage item={image} />
+      <BannerImage item={image3} />
       <AnimationOnScroll animateIn={homeCss.mainClass} animateOnce>
         <ProductBox items={topPicks} title="Warehouse Storage Solution" />
       </AnimationOnScroll>
-      <Row className="m-0">
+      {/* <Row className="m-0">
         {ImageList.map((item) => {
           return (
             <Col className="p-0" key={uuid()}>
@@ -159,15 +187,16 @@ export default function Home() {
             </Col>
           );
         })}
-      </Row>
+      </Row> */}
+      <BannerImage item={image4} />
       <AnimationOnScroll animateIn={homeCss.mainClass} animateOnce>
         <ProductBox items={topPicks} title="Industrial Storage Solution" />
       </AnimationOnScroll>
-      <BannerImage item={image} />
+      <BannerImage item={image5} />
       <AnimationOnScroll animateIn={homeCss.mainClass} animateOnce>
         <ProductBox items={topPicks} title="Garage Storage Solution" />
       </AnimationOnScroll>
-      <Row className="m-0">
+      {/* <Row className="m-0">
         {ImageList.map((item) => {
           return (
             <Col className="p-0" key={uuid()}>
@@ -175,21 +204,23 @@ export default function Home() {
             </Col>
           );
         })}
-      </Row>
+      </Row> */}
       <AnimationOnScroll animateIn={homeCss.mainClass} animateOnce>
         <h1 className="text-center">About Storack India</h1>
         <hr />
         <Row className="mb-5">
           <Col sm={12} md={6} style={{ margin: 'auto' }}>
-            <img src="/assets/Images/tumb-1.jpg" width="100%" height="400px" />
+            <img src="/assets/Images/office-2.jpg" width="100%" height="400px" />
           </Col>
           <Col sm={12} md={6}>
-            <h4>Storack India Private Ltd.</h4>
-            {ABOUT_US.map((para, index) => (
-              <p key={index} className="text-secondary">
-                {para}
-              </p>
-            ))}
+            <div className='m-md-2'>
+              <h4>Storack India Private Ltd.</h4>
+              {ABOUT_US.map((para, index) => (
+                <p key={index} className="text-secondary">
+                  {para}
+                </p>
+              ))}
+            </div>
             <br />
             <div style={{ display: 'flex', justifyContent: 'center' }}>
               <Link href="/about-us">
@@ -201,9 +232,9 @@ export default function Home() {
           </Col>
         </Row>
       </AnimationOnScroll>
-      <AnimationOnScroll animateIn={homeCss.mainClass} animateOnce>
+      {/* <AnimationOnScroll animateIn={homeCss.mainClass} animateOnce>
         <ProductBox items={topPicks} title="" />
-      </AnimationOnScroll>
+      </AnimationOnScroll> */}
       <AnimationOnScroll animateIn={homeCss.mainClass} animateOnce>
         <div className="m-5">
           <CountersSection />
