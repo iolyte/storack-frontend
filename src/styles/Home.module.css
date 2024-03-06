@@ -1,3 +1,51 @@
+.dropbtn {
+  border: none;
+}
+
+.dropdown {
+  display: block;
+  padding: var(--bs-nav-link-padding-y) var(--bs-nav-link-padding-x);
+  font-size: var(--bs-nav-link-font-size);
+  font-weight: var(--bs-nav-link-font-weight);
+  color: var(--bs-nav-link-color);
+  text-decoration: none;
+  background: 0 0;
+  border: 0;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.dropdown a {
+  text-decoration: none;
+  color: #000000a6;
+}
+
+.dropdown a:hover {
+  color: black;
+}
+
+.dropdownContent {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdownContent a {
+  color: black;
+  padding: 12px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown:hover .dropdownContent {
+  display: block;
+}
+
 .zoom {
   transition: transform 0.2s;
   height: 100%;
@@ -18,11 +66,19 @@
 
 .text {
   position: absolute;
-  top: 25%;
-  left: 20%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 24px;
   text-align: center;
-  margin: auto;
-  padding: 30px;
+}
+
+.bannerImage {
+  width: 100%;
+  height: 100%;
+  max-height: 700px;
+  object-fit: cover;
 }
 
 .longImage {
@@ -32,6 +88,7 @@
 
 .border-visible {
   border: 8px solid white;
+  padding: 30px;
 }
 
 .text h6 {
@@ -46,6 +103,15 @@
   color: white;
   font-weight: bold;
   margin-bottom: 20px;
+}
+
+.text p {
+  font-size: 20px;
+}
+
+.product_dropdown :hover {
+  background-color: #72c24f;
+  color: white !important;
 }
 
 .text button {
@@ -75,10 +141,8 @@
 }
 
 @media (max-width: 768px) {
-  .text {
-    top: 25%;
-    left: 25%;
-    padding: 25px;
+  .bannerImage {
+    max-height: 400px;
   }
   .text h6 {
     font-size: 10px;
@@ -102,6 +166,13 @@
   .footerMargin {
     margin-bottom: 60px !important;
   }
+  .border-visible {
+    border: 4px solid white;
+    padding: 20px;
+  }
+  .text p {
+    font-size: 16px;
+  }
 }
 
 .mainClass {
@@ -123,13 +194,11 @@
 }
 
 @media (max-width: 480px) {
-  .text {
-    top: 5%;
-    left: 5%;
-    padding: 15px;
-  }
   .longImage {
     height: 300px;
+  }
+  .bannerImage {
+    max-height: 300px;
   }
   .logoImage {
     width: 200px;

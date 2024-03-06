@@ -11,6 +11,7 @@ import ArrowForwardIosSharpIcon from '@mui/icons-material/ArrowForwardIosSharp';
 import MuiAccordion from '@mui/material/Accordion';
 import MuiAccordionSummary from '@mui/material/AccordionSummary';
 import { allProduct, getAllCategory } from '@/pages/api/product';
+import { NavigateBefore, NavigateNext } from '@mui/icons-material';
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
@@ -74,13 +75,15 @@ const ProductSideBar = () => {
   const getHotItems = async () => {
     const response = await allProduct(1, '', null, null, 5, true, false);
 
-    const temp = response.products.map((item, index) => {
-      return {
-        id: item?.id,
-        name: item?.name || 'Hot Product',
-        link: `${BASE_URL}/${item?.images[0]}`,
-      };
-    });
+    const temp =
+      response.products &&
+      response.products.map((item, index) => {
+        return {
+          id: item?.id,
+          name: item?.name || 'Hot Product',
+          link: `${BASE_URL}/${item?.images[0]}`,
+        };
+      });
 
     setHotItems(temp);
   };
@@ -139,10 +142,22 @@ const ProductSideBar = () => {
           })}
       </Box>
       <Box display={{ xs: 'none', sm: 'block' }}>
-        <Typography variant="h4" sx={{ px: 2, textAlign: 'center', m: 3 }}>
+        <Box
+          sx={{
+            textTransform: 'capitalize',
+            typography: {
+              sm: 'h6',
+              md: 'h5',
+              lg: 'h4',
+            },
+            px: 2,
+            textAlign: 'center',
+            m: 3,
+          }}
+        >
           Hot Items
-        </Typography>
-        <Box sx={{ width: '100%', m: 2 }}>
+        </Box>
+        <Box sx={{ width: '96%', m: 1 }}>
           <Carousel
             showDots={true}
             arrows={true}
@@ -152,25 +167,27 @@ const ProductSideBar = () => {
             autoPlaySpeed={5000}
             keyBoardControl={true}
           >
-            {hotItems.map((item, index) => (
-              <Box
-                key={index}
-                sx={{
-                  width: '100%',
-                }}
-              >
-                <Link href={`/product-details?product_id=${item.id}`}>
-                  <img
-                    src={item.link}
-                    className={`${homeCss.zoom}`}
-                    style={{
-                      width: '100%',
-                      height: '100%',
-                    }}
-                  />
-                </Link>
-              </Box>
-            ))}
+            {hotItems !== undefined &&
+              hotItems.length > 0 &&
+              hotItems.map((item, index) => (
+                <Box
+                  key={index}
+                  sx={{
+                    width: '100%',
+                  }}
+                >
+                  <Link href={`/product-details?product_id=${item.id}`}>
+                    <img
+                      src={item.link}
+                      className={`${homeCss.zoom}`}
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                      }}
+                    />
+                  </Link>
+                </Box>
+              ))}
           </Carousel>
         </Box>
       </Box>

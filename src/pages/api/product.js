@@ -98,3 +98,29 @@ export const getAllCategory = async () => {
   );
   return res;
 };
+
+export const getHomePageProducts = async () => {
+  let res = {
+    products: null,
+    status: null,
+    message: null,
+  };
+  await axios.get(`${base_url}/pub/getHomeProducts`).then(
+    (response) => {
+      res = {
+        products: response.data.data,
+        status: response.data.code,
+        message: '',
+      };
+    },
+    (error) => {
+      res = {
+        products: null,
+        status: error.code || 500,
+        message: error,
+      };
+      console.log(error);
+    }
+  );
+  return res;
+};

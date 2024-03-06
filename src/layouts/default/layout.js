@@ -14,7 +14,26 @@ import CallIcon from '@mui/icons-material/Call';
 
 export const Layout = (props) => {
   const { children } = props;
+
   const [value, setValue] = React.useState(0);
+
+  React.useEffect(() => {
+    const routeArr = [
+      '/',
+      '/product',
+      '/about-us',
+      '/contact-us',
+      '/product-details',
+    ];
+    const path = window.location.pathname;
+    let indexOfPath = routeArr.indexOf(path);
+
+    if (indexOfPath === 4) {
+      indexOfPath = 1;
+    }
+    setValue(indexOfPath >= 0 ? indexOfPath : 0);
+  }, []);
+
   return (
     <>
       <Header />

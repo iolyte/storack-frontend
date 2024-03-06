@@ -13,9 +13,13 @@ import Button from 'react-bootstrap/Button';
 import { AnimationOnScroll } from 'react-animation-on-scroll';
 import { ABOUT_US } from '@/utils/constents';
 import Link from 'next/link';
-import { Typography } from '@mui/material';
+import { Typography, Box } from '@mui/material';
+import { getHomePageProducts } from './api/product';
+import { useEffect, useState } from 'react';
 
 export default function Home() {
+  const IMAGE_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
+  
   const sliderImage = [
     {
       name: 'slider-1',
@@ -39,26 +43,7 @@ export default function Home() {
     },
   ];
 
-  const topPicks = [
-    {
-      name: 'box-1',
-      link: '/assets/Images/box-1.jpg',
-    },
-    {
-      name: 'box-2',
-      link: '/assets/Images/box-2.jpg',
-    },
-    {
-      name: 'box-3',
-      link: '/assets/Images/box-3.jpg',
-    },
-    {
-      name: 'box-4',
-      link: '/assets/Images/box-4.jpg',
-    },
-  ];
-
-  const image = {
+  const livingRoomStorageImage = {
     name: 'Living Room Storage',
     link: '/assets/Images/Home/living-room.jpg',
     title: 'LIVING ROOM STORAGE',
@@ -66,7 +51,7 @@ export default function Home() {
     borderVisible: false,
   };
 
-  const image2 = {
+  const bathroomStorageImage = {
     name: 'Bathroom Storage',
     link: '/assets/Images/Home/bathroom-storage.jpg',
     title: 'BATHROOM STORAGE',
@@ -74,7 +59,7 @@ export default function Home() {
     borderVisible: true,
   };
 
-  const image3 = {
+  const warehouseStorageImage = {
     name: 'Warehouse Storage',
     link: '/assets/Images/Home/warehouse-storage.jpg',
     title: 'WAREHOUSE STORAGE',
@@ -82,7 +67,7 @@ export default function Home() {
     borderVisible: false,
   };
 
-  const image4 = {
+  const industrialStorageImage = {
     name: 'Industrial Storage',
     link: '/assets/Images/Home/industrial-storage.jpg',
     title: 'INDUSTRIAL STORAGE',
@@ -90,7 +75,7 @@ export default function Home() {
     borderVisible: true,
   };
 
-  const image5 = {
+  const garageStorageImage = {
     name: 'Garage Storage',
     link: '/assets/Images/Home/garage-storage.jpg',
     title: 'GARAGE STORAGE',
@@ -144,6 +129,87 @@ export default function Home() {
     },
   ];
 
+  const [topPicks, setTopPicks] = useState([]);
+  const [leavingRoomStorage, setLeavingRoomStorage] = useState([]);
+  const [bathroomStorage, setBathroomStorage] = useState([]);
+  const [warehouseStorage, setWarehouseStorage] = useState([]);
+  const [industrialStorage, setIndustrialStorage] = useState([]);
+  const [garageStorage, setGarageStorage] = useState([]);
+
+  const getProductData = async () => {
+    const response = await getHomePageProducts();
+    console.log('response: ', response);
+    if (response.status === 200) {
+      const tempTopPicks = response?.products?.topProducts?.map((item) => {
+        return {
+          name: item.name,
+          link: `${IMAGE_BASE_URL}${item?.images[0]}`,
+          redirectURL: `/product-details?product_id=${item.id}`,
+        };
+      });
+
+      const tempLeavingRoomStorage =
+        response?.products?.leavingRoomStorage?.map((item) => {
+          return {
+            name: item.name,
+            link: `${IMAGE_BASE_URL}${item?.images[0]}`,
+            redirectURL: `/product-details?product_id=${item.id}`,
+          };
+        });
+
+      const tempBathroomStorage = response?.products?.bathroomStorage?.map(
+        (item) => {
+          return {
+            name: item.name,
+            link: `${IMAGE_BASE_URL}${item?.images[0]}`,
+            redirectURL: `/product-details?product_id=${item.id}`,
+          };
+        }
+      );
+
+      const tempWarehouseStorage = response?.products?.warehouseStorage?.map(
+        (item) => {
+          return {
+            name: item.name,
+            link: `${IMAGE_BASE_URL}${item?.images[0]}`,
+            redirectURL: `/product-details?product_id=${item.id}`,
+          };
+        }
+      );
+
+      const tempIndustrialStorage = response?.products?.industrialStorage?.map(
+        (item) => {
+          return {
+            name: item.name,
+            link: `${IMAGE_BASE_URL}${item?.images[0]}`,
+            redirectURL: `/product-details?product_id=${item.id}`,
+          };
+        }
+      );
+
+      const tempGarageStorage = response?.products?.garageStorage?.map(
+        (item) => {
+          return {
+            name: item.name,
+            link: `${IMAGE_BASE_URL}${item?.images[0]}`,
+            redirectURL: `/product-details?product_id=${item.id}`,
+          };
+        }
+      );
+
+      setTopPicks(tempTopPicks);
+      setLeavingRoomStorage(tempLeavingRoomStorage);
+      setBathroomStorage(tempBathroomStorage);
+      setWarehouseStorage(tempWarehouseStorage);
+      setIndustrialStorage(tempIndustrialStorage);
+      setGarageStorage(tempGarageStorage);
+    }
+  };
+
+  useEffect(() => {
+    getProductData();
+  }, []);
+
   return (
     <div style={{ overflowX: 'hidden' }}>
       <Carousel data-bs-theme="dark" controls={false}>
@@ -164,20 +230,24 @@ export default function Home() {
           );
         })}
       </Carousel>
+      <ProductBox items={topPicks} title="Top Pick" />
+      <BannerImage item={livingRoomStorageImage} />
       <AnimationOnScroll animateIn={homeCss.mainClass} animateOnce>
-        <ProductBox items={topPicks} title="Top Pick" />
+        <ProductBox
+          items={leavingRoomStorage}
+          title="Living room Storage Solution"
+        />
       </AnimationOnScroll>
-      <BannerImage item={image} />
+      <BannerImage item={bathroomStorageImage} />
       <AnimationOnScroll animateIn={homeCss.mainClass} animateOnce>
-        <ProductBox items={topPicks} title="Living room Storage Solution" />
+        <ProductBox items={bathroomStorage} title="Bathroom Storage Solution" />
       </AnimationOnScroll>
-      <BannerImage item={image2} />
+      <BannerImage item={warehouseStorageImage} />
       <AnimationOnScroll animateIn={homeCss.mainClass} animateOnce>
-        <ProductBox items={topPicks} title="Bathroom Storage Solution" />
-      </AnimationOnScroll>
-      <BannerImage item={image3} />
-      <AnimationOnScroll animateIn={homeCss.mainClass} animateOnce>
-        <ProductBox items={topPicks} title="Warehouse Storage Solution" />
+        <ProductBox
+          items={warehouseStorage}
+          title="Warehouse Storage Solution"
+        />
       </AnimationOnScroll>
       {/* <Row className="m-0">
         {ImageList.map((item) => {
@@ -188,13 +258,16 @@ export default function Home() {
           );
         })}
       </Row> */}
-      <BannerImage item={image4} />
+      <BannerImage item={industrialStorageImage} />
       <AnimationOnScroll animateIn={homeCss.mainClass} animateOnce>
-        <ProductBox items={topPicks} title="Industrial Storage Solution" />
+        <ProductBox
+          items={industrialStorage}
+          title="Industrial Storage Solution"
+        />
       </AnimationOnScroll>
-      <BannerImage item={image5} />
+      <BannerImage item={garageStorageImage} />
       <AnimationOnScroll animateIn={homeCss.mainClass} animateOnce>
-        <ProductBox items={topPicks} title="Garage Storage Solution" />
+        <ProductBox items={garageStorage} title="Garage Storage Solution" />
       </AnimationOnScroll>
       {/* <Row className="m-0">
         {ImageList.map((item) => {
@@ -210,25 +283,31 @@ export default function Home() {
         <hr />
         <Row className="mb-5">
           <Col sm={12} md={6} style={{ margin: 'auto' }}>
-            <img src="/assets/Images/office-2.jpg" width="100%" height="400px" />
+            <img
+              src="/assets/Images/office-2.jpg"
+              width="100%"
+              height="400px"
+            />
           </Col>
           <Col sm={12} md={6}>
-            <div className='m-md-2'>
-              <h4>Storack India Private Ltd.</h4>
-              {ABOUT_US.map((para, index) => (
-                <p key={index} className="text-secondary">
-                  {para}
-                </p>
-              ))}
-            </div>
-            <br />
-            <div style={{ display: 'flex', justifyContent: 'center' }}>
-              <Link href="/about-us">
-                <Button variant="dark" size="lg">
-                  View More
-                </Button>
-              </Link>
-            </div>
+            <Box sx={{ m: 2 }}>
+              <div className="m-md-2">
+                <h4>Storack India Private Ltd.</h4>
+                {ABOUT_US.map((para, index) => (
+                  <p key={index} className="text-secondary">
+                    {para}
+                  </p>
+                ))}
+              </div>
+              <br />
+              <div style={{ display: 'flex', justifyContent: 'center' }}>
+                <Link href="/about-us">
+                  <Button variant="dark" size="lg">
+                    View More
+                  </Button>
+                </Link>
+              </div>
+            </Box>
           </Col>
         </Row>
       </AnimationOnScroll>
@@ -245,10 +324,10 @@ export default function Home() {
           <img
             src="/assets/Images/home_partner.webp"
             width="100%"
-            height="200px"
+            height="300px"
           />
           <div className="m-3">
-            <div className={homeCss.text} style={{ left: '20%' }}>
+            <div className={homeCss.text}>
               <h2 className="text-light">WELCOME TO BE OUR PARTNER</h2>
               <p className="text-light">
                 Committed to be the professional leading organization & storage

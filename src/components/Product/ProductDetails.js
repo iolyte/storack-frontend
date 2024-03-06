@@ -1,15 +1,19 @@
 import homeCss from '@/styles/Home.module.css';
-import { Box, Grid, Typography } from '@mui/material';
+import { Box, Grid, Typography, Button } from '@mui/material';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import ProductSideBar from './ProductSideBar';
 import { useEffect, useState } from 'react';
-import WhatsAppIcon from '@mui/icons-material/WhatsApp';
-import BottomNavigationAction from '@mui/material/BottomNavigationAction';
+import { WhatsApp } from '@mui/icons-material';
+
 import { useSearchParams } from 'next/navigation';
 import { productDetails } from '@/pages/api/product';
 import parse from 'html-react-parser';
 import Breadcrumb from '../breadcrumb';
+
+import { ContactDetails } from '@/pages/api/contact';
+
+const IMAGE_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 const responsive = {
   desktop: {
@@ -28,10 +32,11 @@ const responsive = {
 const ProductDetails = (props) => {
   const [imageLink, setImageLink] = useState('/assets/Images/video-2.jpg');
   const [productDetail, setProductDetail] = useState({});
+  console.log('productDetail 1.0.0: ', productDetail.id);
   const [messageDetails, setMessageDetails] = useState({
-    phoneNumber: '+91 94278 22846',
-    message: 'hello this is the test message',
-    imageUrl: 'https://static.toiimg.com/photo/80387978.cms',
+    phoneNumber: ContactDetails?.whatsAppNumber,
+    message: `Hi, I'm interested in this ${productDetail.name} Product. Please let me know more details.`,
+    imageUrl: `${IMAGE_BASE_URL}/product-details?product_id=${productDetail.id}`,
   });
 
   const searchParams = useSearchParams();
@@ -114,22 +119,36 @@ const ProductDetails = (props) => {
                 </Carousel>
               </Box>
             </Grid>
-            <Grid item xs={12} md={6}>
-              <Typography variant="h4">{productDetail?.name}</Typography>
-              <br />
-              <Typography>{stringToHHtml}</Typography>
-              <br />
-              <BottomNavigationAction
-                component="button"
+            <Grid
+              item
+              xs={12}
+              md={6}
+              sx={{ m: { xs: 2, md: 0 }, p: { xs: 0, md: 2 } }}
+            >
+              <Box>
+                <Typography variant="h4">{productDetail?.name}</Typography>
+                <br />
+                <Typography>{stringToHHtml}</Typography>
+                <br />
+              </Box>
+
+              <Button
                 onClick={handleClick}
-                label="Home"
-                icon={
-                  <WhatsAppIcon
-                    color="success"
-                    style={{ padding: 0, height: '50px', width: '50px' }}
-                  />
-                }
-              />
+                variant="contained"
+                size="large"
+                startIcon={<WhatsApp />}
+                sx={{
+                  mb: 0,
+                  backgroundColor: '#25d366',
+                  color: 'white',
+                  textTransform: 'Capitalize',
+                  '&:hover': {
+                    backgroundColor: '#128C7E',
+                  },
+                }}
+              >
+                Inquiry on WhatsApp
+              </Button>
             </Grid>
           </Grid>
         </Grid>

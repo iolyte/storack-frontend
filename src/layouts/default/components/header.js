@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
-import homeCss from '@/styles/Home.module.css';
-import uuid from 'react-uuid';
+import styles from '@/styles/Home.module.css';
 import { getAllCategory } from '@/pages/api/product';
 import { IconButton } from '@mui/material';
 import { SearchOutlined } from '@mui/icons-material';
 import SearchProductDialog from './SearchProductDialog';
+import uuid from 'react-uuid';
+import { useTheme } from '@emotion/react';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 const Header = (props) => {
   const [category, setCategory] = React.useState([]);
@@ -40,24 +41,12 @@ const Header = (props) => {
       link: '/',
     },
     {
-      type: 'text',
-      label: 'About Us',
-      id: '#aboutUs',
-      link: '/about-us',
-    },
-    {
       type: 'dropDown',
       label: 'PRODUCTS',
       id: '#products',
       link: '/product',
       option: subcat,
     },
-    // {
-    //   type: 'text',
-    //   label: 'NEWS',
-    //   id: '#news',
-    //   link: '#',
-    // },
     {
       type: 'text',
       label: 'SOLUTION',
@@ -71,6 +60,9 @@ const Header = (props) => {
       link: '/contact-us',
     },
   ];
+
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
   const [open, setOpen] = useState(false);
 
@@ -93,12 +85,15 @@ const Header = (props) => {
           <img
             src="/assets/logos/logo.png"
             style={{ paddingInline: '20px' }}
-            className={homeCss.logoImage}
+            className={styles.logoImage}
             alt="Picture of the author"
           />
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
+        <Navbar.Toggle
+          aria-controls="basic-navbar-nav"
+          style={{ marginRight: 15 }}
+        />
+        <Navbar.Collapse id="basic-navbar-nav" style={{ marginRight: 15 }}>
           <Nav className="ms-auto">
             {menuBarLabel.length > 0 &&
               menuBarLabel.map((item) => {
@@ -114,37 +109,37 @@ const Header = (props) => {
                   </Nav.Link>
                 ) : (
                   item.option.length > 0 && (
-                    <NavDropdown
-                      key={uuid()}
-                      title={item.label}
+                    <div
+                      class={`${styles.dropdown}`}
                       style={{ paddingInline: '10px' }}
-                      id="basic-nav-dropdown"
-                      className="text-uppercase"
                     >
-                      {item.option.map((option) => {
-                        return (
-                          <NavDropdown.Item
-                            key={uuid()}
-                            href={option.link}
-                            className="text-uppercase"
-                          >
-                            {option.label}
-                          </NavDropdown.Item>
-                        );
-                      })}
-                    </NavDropdown>
+                      <a href={item.link}>{item.label}</a>
+                      <div class={`${styles.dropdownContent}`}>
+                        {item.option.map((option) => {
+                          return (
+                            <div class={`${styles.product_dropdown}`}>
+                              <a href={option.link}>{option.label}</a>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
                   )
                 );
               })}
           </Nav>
         </Navbar.Collapse>
-        <IconButton
-          aria-label="search"
-          sx={{ mr: 2 }}
-          onClick={handleClickOpen}
-        >
-          <SearchOutlined />
-        </IconButton>
+
+        {!isMobile && (
+          <IconButton
+            className="d-md-none d-lg-block"
+            aria-label="search"
+            sx={{ mr: 2 }}
+            onClick={handleClickOpen}
+          >
+            <SearchOutlined />
+          </IconButton>
+        )}
       </Navbar>
 
       <SearchProductDialog open={open} handleClose={handleClose} />

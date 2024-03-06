@@ -11,7 +11,7 @@ const BannerImage = (props) => {
       <img
         src={props.item.link}
         alt={props.item.name}
-        className="d-block w-100 h-80"
+        className={`${homeCss.bannerImage} d-block w-100`}
       />
       <div className={className}>
         <h6>{props.item.description}</h6>

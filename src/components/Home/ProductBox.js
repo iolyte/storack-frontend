@@ -3,6 +3,7 @@ import CardGroup from 'react-bootstrap/CardGroup';
 import homeCss from '@/styles/Home.module.css';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
+import Link from 'next/link';
 
 const responsive = {
   desktop: {
@@ -39,7 +40,21 @@ const ProductBox = (prop) => {
               className="m-2"
               style={{ border: '0', backgroundColor: 'transparent' }}
             >
-              <Card.Img src={item.link} className={`${homeCss.zoom} mb-5`} />
+              {item?.redirectURL ? (
+                <Link href={item?.redirectURL}>
+                  <Card.Img
+                    src={item.link}
+                    className={`${homeCss.zoom} mb-5`}
+                    alt={item.name}
+                  />
+                </Link>
+              ) : (
+                <Card.Img
+                  src={item.link}
+                  className={`${homeCss.zoom} mb-5`}
+                  alt={item.name}
+                />
+              )}
             </Card>
           );
         })}

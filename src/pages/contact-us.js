@@ -56,7 +56,7 @@ const ContactUs = () => {
 
           <Grid item xs={12} sm={6}>
             <Box>
-              <Typography variant="body1">Telephone:</Typography>
+              <Typography variant="body1">Cell:</Typography>
               <Typography variant="h4" fontSize="36px">
                 {telephone}
               </Typography>
