@@ -41,6 +41,12 @@ const Header = (props) => {
       link: '/',
     },
     {
+      type: 'text',
+      id: '#aboutUs',
+      label: 'ABOUT US',
+      link: '/about-us',
+    },
+    {
       type: 'dropDown',
       label: 'PRODUCTS',
       id: '#products',

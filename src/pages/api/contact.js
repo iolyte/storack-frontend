@@ -3,7 +3,7 @@ const base_url = process.env.NEXT_PUBLIC_BASE_URL;
 
 export const ContactDetails = {
   telephone: '123-456-7890',
-  whatsAppNumber: '+91 94278 22846',
+  whatsAppNumber: '+91 84000 88988',
   email: 'support.storack@gmail.com',
   address:
     '2nd Floor, 1st Building, No. 188, East Road, Ahmadabad, Gujarat, India',

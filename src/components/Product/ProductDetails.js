@@ -30,14 +30,8 @@ const responsive = {
   },
 };
 const ProductDetails = (props) => {
-  const [imageLink, setImageLink] = useState('/assets/Images/video-2.jpg');
+  const [imageLink, setImageLink] = useState();
   const [productDetail, setProductDetail] = useState({});
-  console.log('productDetail 1.0.0: ', productDetail.id);
-  const [messageDetails, setMessageDetails] = useState({
-    phoneNumber: ContactDetails?.whatsAppNumber,
-    message: `Hi, I'm interested in this ${productDetail.name} Product. Please let me know more details.`,
-    imageUrl: `${IMAGE_BASE_URL}/product-details?product_id=${productDetail.id}`,
-  });
 
   const searchParams = useSearchParams();
   const pId = searchParams.get('product_id');
@@ -56,8 +50,12 @@ const ProductDetails = (props) => {
 
   const handleClick = (e) => {
     e.preventDefault();
-    const { phoneNumber, message, imageUrl } = messageDetails;
-    const combinedMessage = `${message}\n\n (${imageUrl})`;
+    const phoneNumber = ContactDetails?.whatsAppNumber;
+    const message = `Hi, I'm interested in this ${productDetail.name} Product. Please let me know more details.`;
+    const imageUrl = `${IMAGE_BASE_URL}/product-details?product_id=${productDetail.id}`;
+    const productUrl = `${IMAGE_BASE_URL}/product-details?product_id=${productDetail.id}`;
+
+    const combinedMessage = `${message}\n\n (${productUrl})`;
     const whatsappUrl = `whatsapp://send?phone=${phoneNumber}&text=${combinedMessage}`;
     window.open(whatsappUrl, '_blank');
   };

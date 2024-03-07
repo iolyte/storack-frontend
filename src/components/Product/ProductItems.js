@@ -30,7 +30,7 @@ const ProductItem = (props) => {
 
   useEffect(() => {
     getAllProduct(page, '', categoryId, subcategoryId);
-  }, [page, catId, subCatId]);
+  }, [page, categoryId, subcategoryId]);
 
   const getAllProduct = async (
     page = 1,
@@ -40,7 +40,7 @@ const ProductItem = (props) => {
   ) => {
     const res = await allProduct(page, searchItem, categoryId, subcategoryId);
     setProductDetails(res);
-    setProductCount(productDetails.count);
+    setProductCount(res.count);
   };
 
   const totalPage = Math.ceil(productCount / productDetails.pageSize);
@@ -52,11 +52,17 @@ const ProductItem = (props) => {
           <ProductSideBar />
         </Grid>
         <Grid item xs={12} sm={9} md={9}>
-          <Grid container spacing={2}>
+          <Grid container spacing={2} sx={{ mr: 1 }}>
             {productDetails.products && productDetails.products.length > 0 ? (
               productDetails.products.map((item, index) => {
                 return (
-                  <Grid item xs={12} sm={6} md={4}>
+                  <Grid
+                    item
+                    xs={12}
+                    sm={6}
+                    md={4}
+                    sx={{ mx: { xs: 2, sm: 0 } }}
+                  >
                     <Link
                       href={`/product-details?product_id=${item.id}`}
                       underline="none"
@@ -102,7 +108,7 @@ const ProductItem = (props) => {
           {productDetails.products && productDetails.products.length > 0 && (
             <Stack spacing={2} sx={{ py: 3 }}>
               <Pagination
-                count={totalPage ? totalPage : 1}
+                count={totalPage}
                 style={{ margin: 'auto' }}
                 onChange={handleChange}
               />
