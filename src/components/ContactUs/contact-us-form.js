@@ -4,6 +4,7 @@ import { Box, Grid, TextField, Button } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 import * as Yup from 'yup';
 import { contactUsForm } from '@/pages/api/contact';
+import toast from 'react-hot-toast';
 
 const ContactUsForm = () => {
   const formik = useFormik({
@@ -23,15 +24,25 @@ const ContactUsForm = () => {
     }),
     onSubmit: async (values) => {
       try {
-        const response = await contactUsForm(values);
-        console.log('response: ', response);
+        const temp = {
+          name: values.name,
+          phone: values.mobile_number,
+          email: values.email,
+          address: values.address,
+          content: values.message,
+        };
+
+        const response = await contactUsForm(temp);
         if (response.status === 200) {
-          alert('Your message has been sent successfully!');
+          toast.success(
+            'Thank you for contacting us!, We will get back to you soon :)'
+          );
+          formik.resetForm();
+        } else {
+          toast.error('Something went wrong, Please try again later!');
         }
-        formik.resetForm();
       } catch (error) {
-        console.log('Error:', error);
-        alert('Something went wrong. Please try again later!');
+        toast.error('Something went wrong, Please try again later!');
       }
     },
   });

@@ -19,26 +19,26 @@ import { useEffect, useState } from 'react';
 
 export default function Home() {
   const IMAGE_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
-  
+
   const sliderImage = [
     {
       name: 'slider-1',
-      link: '/assets/Images/slider-1.jpg',
+      link: '/assets/Images/home_slide_1.png',
       text: 'We take pride in offering a wide array of cutting-edge storage solutions, meticulously designed to cater to your diverse needs.',
     },
     {
       name: 'slider-2',
-      link: '/assets/Images/slider-2.jpg',
+      link: '/assets/Images/home_slide_2.png',
       text: 'Experience the Ease of One-Stop Storage Solutions with our company`s Design, Production, Sales, and After-sales services.',
     },
     {
       name: 'slider-3',
-      link: '/assets/Images/slider-3.jpg',
+      link: '/assets/Images/home_slide_3.jpg',
       text: 'Our vision: To be a professional leader and the foremost storage service provider in the industry',
     },
     {
       name: 'slider-4',
-      link: '/assets/Images/slider-4.jpg',
+      link: '/assets/Images/home_slide_4.jpg',
       text: 'We offer an extensive array of OEM/ODM storage product solutions for the homes, industrial spaces, and commercial establishments.',
     },
   ];

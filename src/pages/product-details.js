@@ -24,7 +24,7 @@ const ProductDetail = (props) => {
       <Box
         sx={{
           width: '100%',
-          height: '70vh',
+          height: { xs: '30vh', sm: '70vh', md: '90vh' },
           position: 'relative',
         }}
       >

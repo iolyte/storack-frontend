@@ -20,7 +20,7 @@ const Product = () => {
       <Box
         sx={{
           width: '100%',
-          height: '70vh',
+          height: { xs: '30vh', sm: '70vh', md: '90vh' },
           position: 'relative',
         }}
       >
@@ -35,7 +35,7 @@ const Product = () => {
         <Breadcrumb secondaryTitle="Product" secondaryTitleLink="/product" />
       </Box>
       <Box sx={{ my: 3 }}>
-        <Grid container spacing={0}>
+        <Grid container spacing={2}>
           {videoDetails.map((item, index) => {
             return (
               <Grid

@@ -5,6 +5,8 @@ import { ThemeProvider } from '@emotion/react';
 import { createTheme } from '@mui/material';
 import 'animate.css/animate.min.css';
 
+import { Toaster } from 'react-hot-toast';
+
 export default function App({ Component, pageProps }) {
   const theme = createTheme({
     palette: {
@@ -23,6 +25,7 @@ export default function App({ Component, pageProps }) {
   return (
     <>
       <ThemeProvider theme={theme}>
+        <Toaster />
         <Layout>
           <Component {...pageProps} />
         </Layout>

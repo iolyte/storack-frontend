@@ -42,7 +42,7 @@ const CompanyCultureSection = () => {
           Company Culture
         </Typography>
       </Box>
-      <Grid container spacing={3}>
+      <Grid container spacing={3} sx={{ p: 2 }}>
         {companyCultureData.map(({ imageUrl, title, subtitle }, index) => {
           return (
             <Grid item xs={6} sm={4} md={3} key={index}>
