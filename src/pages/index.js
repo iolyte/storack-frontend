@@ -11,7 +11,7 @@ import uuid from 'react-uuid';
 import NewsBox from '@/components/Home/NewsBox';
 import Button from 'react-bootstrap/Button';
 import { AnimationOnScroll } from 'react-animation-on-scroll';
-import { ABOUT_US } from '@/utils/constents';
+import { ABOUT_US, PRODUCT_CAT_IDS } from '@/utils/constents';
 import Link from 'next/link';
 import { Typography, Box } from '@mui/material';
 import { getHomePageProducts } from './api/product';
@@ -49,6 +49,7 @@ export default function Home() {
     title: 'LIVING ROOM STORAGE',
     description: 'Storage Make the space more valuable',
     borderVisible: false,
+    redirectURL: `/product?cat_id=${PRODUCT_CAT_IDS.LIVING_ROOM_STORAGE}`,
   };
 
   const bathroomStorageImage = {
@@ -57,6 +58,7 @@ export default function Home() {
     title: 'BATHROOM STORAGE',
     description: 'Storage Make the space more valuable',
     borderVisible: true,
+    redirectURL: `/product?cat_id=${PRODUCT_CAT_IDS.BATHROOM_STORAGE}`,
   };
 
   const warehouseStorageImage = {
@@ -65,6 +67,7 @@ export default function Home() {
     title: 'WAREHOUSE STORAGE',
     description: 'Storage Make the space more valuable',
     borderVisible: false,
+    redirectURL: `/product?cat_id=${PRODUCT_CAT_IDS.WAREHOUSE_STORAGE}`,
   };
 
   const industrialStorageImage = {
@@ -73,6 +76,7 @@ export default function Home() {
     title: 'INDUSTRIAL STORAGE',
     description: 'Storage Make the space more valuable',
     borderVisible: true,
+    redirectURL: `/product?cat_id=${PRODUCT_CAT_IDS.INDUSTRIAL_STORAGE}`,
   };
 
   const garageStorageImage = {
@@ -81,6 +85,7 @@ export default function Home() {
     title: 'GARAGE STORAGE',
     description: 'Storage Make the space more valuable',
     borderVisible: false,
+    redirectURL: `/product?cat_id=${PRODUCT_CAT_IDS.GARAGE_STORAGE}`,
   };
 
   const ImageList = [
