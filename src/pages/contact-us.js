@@ -56,21 +56,49 @@ const ContactUs = () => {
 
           <Grid item xs={12} sm={6}>
             <Box>
-              <Typography variant="body1">Cell:</Typography>
-              <Typography variant="h4" fontSize="36px">
+              <Typography fontSize="16px" lineHeight="24px" fontWeight={500}>
+                Call:
+              </Typography>
+              <Typography
+                variant="h4"
+                fontSize="36px"
+                component="a"
+                href={`tel:${telephone}`}
+                sx={{ textDecoration: 'none', color: 'secondary.main' }}
+              >
                 {telephone}
               </Typography>
               <Divider sx={{ my: 2 }} />
               <Typography fontSize="16px" lineHeight="24px" fontWeight={500}>
                 Email:
               </Typography>
-              <Typography fontSize="16px" lineHeight="24px">
+              <Typography
+                fontSize="16px"
+                lineHeight="24px"
+                component="a"
+                href={`mailto:${email}`}
+                sx={{
+                  textDecoration: 'none',
+                  color: 'secondary.main',
+                }}
+              >
                 {email}
               </Typography>
-              <Typography fontSize="16px" lineHeight="24px" fontWeight={500}>
+              <Typography
+                fontSize="16px"
+                lineHeight="24px"
+                fontWeight={500}
+                sx={{ mt: 1 }}
+              >
                 Address:
               </Typography>
-              <Typography fontSize="16px" lineHeight="24px">
+              <Typography
+                fontSize="16px"
+                lineHeight="24px"
+                sx={{
+                  color: 'text.secondary',
+                }}
+              >
                 {address}
               </Typography>
             </Box>

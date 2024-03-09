@@ -42,6 +42,7 @@ const ContactUsForm = () => {
           toast.error('Something went wrong, Please try again later!');
         }
       } catch (error) {
+        console.log('Error 1.0.0:', error);
         toast.error('Something went wrong, Please try again later!');
       }
     },

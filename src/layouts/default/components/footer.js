@@ -69,8 +69,19 @@ const Footer = (props) => {
           <div className="col-md-4 mt-md-0 mt-0 text-start">
             <h6 className="mt-2">Contact Us</h6>
             <div className="text-secondary">
-              <p>Email : {ContactDetails.email}</p>
-              <p>Cell: {ContactDetails.telephone}</p>
+              <a
+                className="text-secondary text-decoration-none"
+                href={`mailto:${ContactDetails.email}`}
+              >
+                Email : {ContactDetails.email}
+              </a>
+              <br />
+              <a
+                className="text-secondary text-decoration-none"
+                href={`tel:${ContactDetails.telephone}`}
+              >
+                Cell: {ContactDetails.telephone}
+              </a>
             </div>
           </div>
 

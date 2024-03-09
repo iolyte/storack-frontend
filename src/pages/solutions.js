@@ -375,15 +375,20 @@ const Solutions = () => {
       </Box>
 
       <Box
+        className={Styles.playerWrapper}
         sx={{
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
           mb: 10,
           mt: 2,
+          m: 2,
         }}
       >
-        <ReactPlayer url="https://www.youtube.com/watch?v=DLZD47lj82o&list=RDDLZD47lj82o&start_radio=1" />
+        <ReactPlayer
+          className={Styles.reactPlayer}
+          url="https://www.youtube.com/watch?v=DLZD47lj82o&list=RDDLZD47lj82o&start_radio=1"
+        />
       </Box>
     </>
   );
