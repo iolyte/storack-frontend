@@ -128,7 +128,7 @@ const Footer = (props) => {
             />
             <h6 className="mt-4">Contact Us</h6>
             <div className="text-secondary">
-              <p>Email : support.storack@gmail.com</p>
+              <p>Email : storackindiaoverseas@gmail.com</p>
               <p>
                 Address :
                 <br />

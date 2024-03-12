@@ -2,11 +2,11 @@ import Axios from 'axios';
 const base_url = process.env.NEXT_PUBLIC_BASE_URL;
 
 export const ContactDetails = {
-  telephone: '123-456-7890',
-  whatsAppNumber: '+91 84000 88988',
-  email: 'support.storack@gmail.com',
+  telephone: '+91 90330 88222',
+  whatsAppNumber: '+91 90330 88222',
+  email: 'storackindiaoverseas@gmail.com',
   address:
-    '2nd Floor, 1st Building, No. 188, East Road, Ahmadabad, Gujarat, India',
+    'Rajkot, Gujarat, India',
 };
 
 export const socialLinks = {

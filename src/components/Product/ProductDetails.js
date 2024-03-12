@@ -14,7 +14,7 @@ import Breadcrumb from '../breadcrumb';
 import { ContactDetails } from '@/pages/api/contact';
 
 const IMAGE_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
-
+const LIVE_URL = process.env.NEXT_PUBLIC_LIVE_URL;
 const responsive = {
   desktop: {
     breakpoint: { max: 3000, min: 992 },
@@ -51,9 +51,9 @@ const ProductDetails = (props) => {
   const handleClick = (e) => {
     e.preventDefault();
     const phoneNumber = ContactDetails?.whatsAppNumber;
-    const message = `Hi, I'm interested in this ${productDetail.name} Product. Please let me know more details.`;
-    const imageUrl = `${IMAGE_BASE_URL}/product-details?product_id=${productDetail.id}`;
-    const productUrl = `${IMAGE_BASE_URL}/product-details?product_id=${productDetail.id}`;
+    const message = `Hi, I'm interested in this ${productDetail.name}.`;
+    const imageUrl = `${LIVE_URL}/product-details?product_id=${productDetail.id}`;
+    const productUrl = `${LIVE_URL}/product-details?product_id=${productDetail.id}`;
 
     const combinedMessage = `${message}\n\n (${productUrl})`;
     const whatsappUrl = `whatsapp://send?phone=${phoneNumber}&text=${combinedMessage}`;
